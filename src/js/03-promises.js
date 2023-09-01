@@ -2,15 +2,13 @@ function createPromise(position, delay) {
   const shouldResolve = Math.random() > 0.3;
 
   return new Promise((resolve, reject) => {
-    if (shouldResolve) {
-      setTimeout(() => {
+    setTimeout(() => {
+      if (shouldResolve) {
         resolve({ position, delay });
-      }, delay);
-    } else {
-      setTimeout(() => {
+      } else {
         reject({ position, delay });
-      }, delay);
-    }
+      }
+    }, delay);
   });
 }
 
@@ -37,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       currentDelay += step;
     }
+
+    form.reset(); // Додаємо цю стрічку для скидання форми
   });
 });
-
